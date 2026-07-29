@@ -1,11 +1,8 @@
 /* ==========================================================================
    JELAJAH KENEP — Digital Thematic Travel Guide
-   JavaScript Core & Interactive Logic
-   KKN Tim II IDBU 64 UNDIP 2026
+   KKN Tim 2 IDBU 64 UNDIP 2026
    ========================================================================== */
 
-// ===== EDIT MANUAL DATA DESTINASI DI SINI =====
-// Anda dapat mengedit daftar foto (images), deskripsi, jam buka, pengelola, kontak, dan link Google Maps di bawah ini.
 const DESTINATIONS_DATA = [
     {
         id: "masjid-darussalam",
