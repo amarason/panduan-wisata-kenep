@@ -1,5 +1,5 @@
 /* ==========================================================================
-   JELAJAH KENEP — Digital Thematic Travel Guide · E-Book Interactive Flip
+   TAPAK KENEP — Digital Thematic Travel Guide · E-Book Interactive Flip
    KKN Tim 2 IDBU 64 UNDIP 2026
    ========================================================================== */
 
