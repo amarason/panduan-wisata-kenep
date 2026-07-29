@@ -14,7 +14,7 @@ let isAnimating = false;
 // ============================================================
 
 /**
- * Show a specific page with realistic 3D page flip animation.
+ * Show a specific page with realistic 3D page flip transition.
  * @param {number} targetIndex - Target page index (0-based)
  * @param {string} direction - 'next' | 'prev'
  */
@@ -26,19 +26,16 @@ function goToPage(targetIndex, direction) {
   var curPageEl = pages[currentPage];
   var nextPageEl = pages[targetIndex];
 
-  // Apply transition to both pages
-  curPageEl.style.transition = 'transform 0.52s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.52s ease';
-  nextPageEl.style.transition = 'transform 0.52s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.52s ease';
+  curPageEl.style.transition = 'transform 0.48s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.48s ease';
+  nextPageEl.style.transition = 'transform 0.48s cubic-bezier(0.645, 0.045, 0.355, 1), opacity 0.48s ease';
 
   if (direction === 'next') {
-    // Current page flips away to the left (like turning a right-hand page)
     curPageEl.style.transformOrigin = 'left center';
-    curPageEl.style.transform = 'rotateY(-105deg)';
+    curPageEl.style.transform = 'rotateY(-95deg)';
     curPageEl.style.opacity = '0';
 
-    // Incoming page starts rotated from the right, then settles flat
     nextPageEl.style.transformOrigin = 'right center';
-    nextPageEl.style.transform = 'rotateY(65deg)';
+    nextPageEl.style.transform = 'rotateY(60deg)';
     nextPageEl.style.opacity = '0';
     nextPageEl.style.display = 'block';
 
@@ -48,14 +45,12 @@ function goToPage(targetIndex, direction) {
       nextPageEl.style.opacity = '1';
     });
   } else {
-    // Current page flips away to the right (turning backward)
     curPageEl.style.transformOrigin = 'right center';
-    curPageEl.style.transform = 'rotateY(105deg)';
+    curPageEl.style.transform = 'rotateY(95deg)';
     curPageEl.style.opacity = '0';
 
-    // Incoming page from the left
     nextPageEl.style.transformOrigin = 'left center';
-    nextPageEl.style.transform = 'rotateY(-65deg)';
+    nextPageEl.style.transform = 'rotateY(-60deg)';
     nextPageEl.style.opacity = '0';
     nextPageEl.style.display = 'block';
 
@@ -67,7 +62,6 @@ function goToPage(targetIndex, direction) {
   }
 
   setTimeout(function () {
-    // Clean up outgoing page
     curPageEl.classList.remove('active');
     curPageEl.style.display = 'none';
     curPageEl.style.transform = '';
@@ -75,7 +69,6 @@ function goToPage(targetIndex, direction) {
     curPageEl.style.transition = '';
     curPageEl.style.transformOrigin = '';
 
-    // Settle incoming page
     nextPageEl.classList.add('active');
     nextPageEl.style.transform = '';
     nextPageEl.style.opacity = '';
@@ -85,11 +78,14 @@ function goToPage(targetIndex, direction) {
     currentPage = targetIndex;
     updateNavUI();
     isAnimating = false;
-  }, 540);
+
+    // Reset scroll to top of page on navigation
+    nextPageEl.scrollTop = 0;
+  }, 500);
 }
 
 /**
- * Move forward or backward by step count.
+ * Move forward (+1) or backward (-1) by step count.
  */
 function changePage(step) {
   var target = currentPage + step;
@@ -99,7 +95,7 @@ function changePage(step) {
 }
 
 /**
- * Update Nav Bar UI indicators
+ * Update Navigation Bar UI
  */
 function updateNavUI() {
   var numEl = document.getElementById('currentPageNum');
@@ -113,21 +109,18 @@ function updateNavUI() {
 // CLICK TO FLIP HANDLER
 // ============================================================
 function handlePageClick(e) {
-  // Only bypass page flip if clicking explicit action controls: links, action buttons, zoom badges, or photo modal
+  // Only bypass page flip if clicking explicit action controls
   var explicitControl = e.target.closest('a, button, .photo-zoom-btn, .photo-inset-badge, .photo-modal');
-  if (explicitControl) {
-    return; // allow button/link action to proceed without turning page
-  }
+  if (explicitControl) return;
 
-  // Calculate click side on the book page (left half = prev page, right half = next page)
   var page = e.currentTarget;
   var rect = page.getBoundingClientRect();
   var clickX = e.clientX - rect.left;
 
   if (clickX > rect.width * 0.5) {
-    changePage(1);  // Right side click -> next page
+    changePage(1);  // Right half -> next
   } else {
-    changePage(-1); // Left side click -> previous page
+    changePage(-1); // Left half -> prev
   }
 }
 
@@ -192,44 +185,6 @@ document.addEventListener('touchend', function (e) {
 }, { passive: true });
 
 // ============================================================
-// DYNAMIC VIEWPORT SCALING
-// ============================================================
-function updatePageScaling() {
-  var wrapper = document.getElementById('book-wrapper');
-  if (!wrapper) return;
-
-  var availW = window.innerWidth;
-  var availH = window.innerHeight - 48; // minus navbar height
-
-  // A5 reference size (148mm × 210mm ≈ 559px × 793px at 96dpi)
-  var targetW = 559;
-  var targetH = 793;
-
-  // On smaller screens, allow tighter margins (96-98%) so the ebook fills the screen comfortably
-  var paddingFactor = availW < 768 ? 0.97 : 0.95;
-
-  var scaleW = (availW * paddingFactor) / targetW;
-  var scaleH = (availH * paddingFactor) / targetH;
-  
-  // Choose scale to fit both width and height cleanly
-  var scale = Math.min(scaleW, scaleH);
-
-  // Apply reasonable max cap for ultra-large desktop screens to maintain crisp text
-  if (availW > 1600) {
-    scale = Math.min(scale, 1.35);
-  }
-
-  // Recenter vertically after scaling
-  var scaledH = targetH * scale;
-  var marginTop = Math.max(0, (availH - scaledH) / 2);
-
-  wrapper.style.transform = 'scale(' + scale + ')';
-  wrapper.style.marginTop = marginTop + 'px';
-}
-
-window.addEventListener('resize', updatePageScaling);
-
-// ============================================================
 // LIGHTBOX PHOTO MODAL
 // ============================================================
 function openPhotoModal(imageSrc, captionText) {
@@ -278,12 +233,12 @@ document.addEventListener('DOMContentLoaded', function () {
   totalPages = pages.length;
   pageTitles = pages.map(function (p) { return p.getAttribute('data-title') || ''; });
 
-  // Attach click-to-flip on every page container
+  // Attach click-to-flip on page containers
   pages.forEach(function (p) {
     p.addEventListener('click', handlePageClick);
   });
 
-  // URL hash → starting page
+  // URL Hash check
   var hash = window.location.hash.replace('#', '');
   var startAt = 0;
   if (hash) {
@@ -294,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Initialize: hide all, show starting page
+  // Hide all pages, show starting page
   pages.forEach(function (p) {
     p.style.display = 'none';
     p.classList.remove('active');
@@ -305,5 +260,4 @@ document.addEventListener('DOMContentLoaded', function () {
   pages[currentPage].classList.add('active');
 
   updateNavUI();
-  updatePageScaling();
 });

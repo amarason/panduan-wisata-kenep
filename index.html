@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="description" content="Jelajah Kenep - Digital Thematic Travel Guide Desa Wisata Kreatif Kenep. KKN Tim 2 IDBU 64 UNDIP 2026.">
   <title>JELAJAH KENEP — Digital Thematic Travel Guide</title>
 
@@ -13,41 +13,50 @@
 </head>
 <body>
 
-  <!-- ================================================================
-       PAGE NAVIGATION BAR (screen only)
-       ================================================================ -->
-  <div id="page-nav-bar">
+  <!-- PAGE NAVIGATION BAR -->
+  <header id="page-nav-bar">
     <div id="nav-left">
       <span id="page-title-display">Cover</span>
     </div>
+
     <div id="nav-center">
-      <span id="currentPageNum">01</span>
-      <span class="sep">/</span>
-      <span>12</span>
+      <button class="nav-arrow-btn" onclick="changePage(-1)" title="Halaman Sebelumnya" aria-label="Sebelumnya">‹</button>
+      <div class="nav-page-num">
+        <span id="currentPageNum">01</span>
+        <span class="sep">/</span>
+        <span>12</span>
+      </div>
+      <button class="nav-arrow-btn" onclick="changePage(1)" title="Halaman Berikutnya" aria-label="Berikutnya">›</button>
     </div>
+
     <div id="nav-right">
-      <span class="nav-key-hint">Klik halaman untuk membalik</span>
-      <button id="print-btn" onclick="window.print()" title="Cetak atau Ekspor PDF A5">⊡ PDF</button>
+      <span class="nav-key-hint">Klik/Usap untuk membalik</span>
+      <button id="print-btn" onclick="window.print()" title="Cetak atau Ekspor PDF A5">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <span>PDF</span>
+      </button>
     </div>
-  </div>
+  </header>
 
-  <!-- ================================================================
-       BOOK WRAPPER — 12 halaman A5 portrait
-       ================================================================ -->
-  <div id="book-wrapper">
+  <!-- BOOK WRAPPER -->
+  <main id="book-wrapper">
 
-    <!-- ============================================================
-         PAGE 01 — COVER
-         ============================================================ -->
-    <div class="book-page active" id="page-cover" data-title="Cover">
+    <!-- PAGE 01 — COVER -->
+    <section class="book-page active" id="page-cover" data-title="Cover">
       <div class="cover-photo">
         <img src="images/hero/hero-1.jpeg" alt="Desa Wisata Kreatif Kenep">
       </div>
       <div class="cover-vignette" aria-hidden="true"></div>
+
+      <svg class="heritage-floral-header" viewBox="0 0 100 24" fill="none" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M50 2C42 10 30 4 20 12C10 20 0 14 0 24H100C100 14 90 20 80 12C70 4 58 10 50 2Z" fill="var(--gold)" opacity="0.14"/>
+        <circle cx="50" cy="12" r="3" fill="var(--gold)" opacity="0.4"/>
+      </svg>
+
       <div class="cover-top-bar">
         <span class="cover-top-badge">✦ &nbsp; KKN Tim 2 IDBU 64 · Universitas Diponegoro 2026</span>
       </div>
-      <div class="cover-corner-ornament" aria-hidden="true"></div>
+
       <div class="cover-content">
         <div class="cover-eyebrow">Digital Thematic Travel Guide</div>
         <h1 class="cover-title">JELAJAH<br>KENEP</h1>
@@ -58,6 +67,7 @@
           kuliner olahan tradisional, serta jejak sejarah religi Desa Wisata Kreatif Kenep.
         </p>
       </div>
+
       <div class="cover-bottom">
         <div class="cover-location-line">Desa Wisata Kreatif Kenep &nbsp;·&nbsp; Sukoharjo &nbsp;·&nbsp; Jawa Tengah</div>
         <div class="cover-stats">
@@ -72,34 +82,36 @@
           </div>
         </div>
       </div>
+
       <div class="nav-hint" aria-hidden="true">
         <span class="nav-hint-icon">‹</span>
         <span class="nav-hint-icon">›</span>
       </div>
       <div class="page-stamp">01</div>
-    </div>
+    </section>
 
-
-    <!-- ============================================================
-         PAGE 02 — INTRODUCTION
-         ============================================================ -->
-    <div class="book-page" id="page-intro" data-title="Tentang Kenep">
+    <!-- PAGE 02 — INTRODUCTION -->
+    <section class="book-page" id="page-intro" data-title="Tentang Kenep">
       <div class="running-header">
         <span class="running-header-title">Desa Wisata Kreatif Kenep</span>
         <span class="running-header-brand">Jelajah Kenep</span>
       </div>
+
       <div class="page-body">
         <div class="chapter-eyebrow">Bab I</div>
         <div class="gold-rule"></div>
         <h2 class="intro-section-title">Di Mana Tradisi<br>Terus Bernapas</h2>
         <div class="gold-rule"></div>
+
         <p class="intro-body-text">
           Desa Wisata Kreatif Kenep menghadirkan pengalaman wisata yang tumbuh dari kehidupan masyarakatnya.
           Dari proses membatik, pembuatan jenang dan karak yang diwariskan lintas generasi,
           hingga jejak religi Masjid Darussalam — setiap tempat menyimpan cerita tentang bagaimana
           tradisi terus hidup di tengah masyarakat.
         </p>
+
         <div class="ornament-center">✦ &nbsp; ✦ &nbsp; ✦</div>
+
         <div class="pillars-list">
           <div class="pillar-row">
             <div class="pillar-icon-col">🎨</div>
@@ -127,22 +139,21 @@
           </div>
         </div>
       </div>
+
       <div class="nav-hint" aria-hidden="true">
         <span class="nav-hint-icon">‹</span>
         <span class="nav-hint-icon">›</span>
       </div>
       <div class="page-stamp">02</div>
-    </div>
+    </section>
 
-
-    <!-- ============================================================
-         PAGE 03 — ROUTE OVERVIEW
-         ============================================================ -->
-    <div class="book-page" id="page-route-overview" data-title="Pilih Perjalananmu">
+    <!-- PAGE 03 — ROUTE OVERVIEW -->
+    <section class="book-page" id="page-route-overview" data-title="Pilih Perjalananmu">
       <div class="running-header">
         <span class="running-header-title">Panduan Perjalanan</span>
         <span class="running-header-brand">Jelajah Kenep</span>
       </div>
+
       <div class="page-body">
         <div class="chapter-eyebrow">Bab II</div>
         <div class="gold-rule"></div>
@@ -151,6 +162,7 @@
           Dua cara untuk mengenal Kenep lebih dekat.
           Pilih alur pengalaman yang paling memikat hati Anda.
         </p>
+
         <div class="route-overview-grid">
           <div class="route-block">
             <div class="route-block-header">
@@ -170,6 +182,7 @@
               <span class="stop-badge">Makam Kyai Lombok</span>
             </div>
           </div>
+
           <div class="route-block">
             <div class="route-block-header">
               <span class="route-block-num">Rute 02</span>
@@ -194,31 +207,25 @@
           </div>
         </div>
       </div>
+
       <div class="nav-hint" aria-hidden="true">
         <span class="nav-hint-icon">‹</span>
         <span class="nav-hint-icon">›</span>
       </div>
       <div class="page-stamp">03</div>
-    </div>
+    </section>
 
-
-    <!-- ============================================================
-         PAGE 04 — MASJID DARUSSALAM
-         ============================================================ -->
-    <div class="book-page" id="page-dest-masjid" data-title="Masjid Darussalam">
+    <!-- PAGE 04 — MASJID DARUSSALAM -->
+    <section class="book-page" id="page-dest-masjid" data-title="Masjid Darussalam">
       <div class="running-header">
         <span class="running-header-title">Rute 01 · Titik 01</span>
         <span class="running-header-brand">Religi &amp; Sejarah</span>
       </div>
+
       <div class="page-body dest-single-flow">
-        
-        <!-- Elegant Framed Photo Container (Top Half) -->
         <div class="dest-photo-card">
           <div class="photo-frame-wrapper">
-            <img class="photo-main"
-                 src="images/history/masjid-darussalam-1.jpeg"
-                 alt="Masjid Darussalam Kedunggudel"
-                 data-caption="Masjid Darussalam — Tampak Luar">
+            <img class="photo-main" src="images/history/masjid-darussalam-1.jpeg" alt="Masjid Darussalam Kedunggudel" data-caption="Masjid Darussalam — Tampak Luar">
             <div class="photo-inset-badge" onclick="event.stopPropagation(); openPhotoModal('images/history/masjid-darussalam-2.jpeg','Masjid Darussalam — Interior');" title="Lihat Foto Interior">
               <img src="images/history/masjid-darussalam-2.jpeg" alt="Interior">
               <span>Interior 🔍</span>
@@ -227,7 +234,6 @@
           </div>
         </div>
 
-        <!-- Destination Content (Bottom Half) -->
         <div class="dest-details-card">
           <div class="dest-details-header">
             <h2 class="dest-panel-title">Masjid Darussalam</h2>
@@ -266,38 +272,30 @@
             </div>
           </div>
         </div>
-
       </div>
+
       <div class="nav-hint" aria-hidden="true">
         <span class="nav-hint-icon">‹</span>
         <span class="nav-hint-icon">›</span>
       </div>
       <div class="page-stamp">04</div>
-    </div>
+    </section>
 
-
-    <!-- ============================================================
-         PAGE 05 — MAKAM KYAI LOMBOK
-         ============================================================ -->
-    <div class="book-page" id="page-dest-makam" data-title="Makam Kyai Lombok">
+    <!-- PAGE 05 — MAKAM KYAI LOMBOK -->
+    <section class="book-page" id="page-dest-makam" data-title="Makam Kyai Lombok">
       <div class="running-header">
         <span class="running-header-title">Rute 01 · Titik 02</span>
         <span class="running-header-brand">Religi &amp; Sejarah</span>
       </div>
-      <div class="page-body dest-single-flow">
 
-        <!-- Elegant Framed Photo Container (Top Half) -->
+      <div class="page-body dest-single-flow">
         <div class="dest-photo-card">
           <div class="photo-frame-wrapper">
-            <img class="photo-main"
-                 src="images/history/makam-kyai-lombok.png"
-                 alt="Makam Kyai Lombok Kedunggudel"
-                 data-caption="Makam Kyai Lombok — Kedunggudel">
+            <img class="photo-main" src="images/history/makam-kyai-lombok.png" alt="Makam Kyai Lombok Kedunggudel" data-caption="Makam Kyai Lombok — Kedunggudel">
             <button class="photo-zoom-btn" onclick="event.stopPropagation(); openPhotoModal('images/history/makam-kyai-lombok.png','Makam Kyai Lombok — Kedunggudel');" title="Perbesar Foto">🔍 Perbesar</button>
           </div>
         </div>
 
-        <!-- Destination Content (Bottom Half) -->
         <div class="dest-details-card">
           <div class="dest-details-header">
             <h2 class="dest-panel-title">Makam Kyai Lombok</h2>
@@ -336,24 +334,22 @@
             </div>
           </div>
         </div>
-
       </div>
+
       <div class="nav-hint" aria-hidden="true">
         <span class="nav-hint-icon">‹</span>
         <span class="nav-hint-icon">›</span>
       </div>
       <div class="page-stamp">05</div>
-    </div>
+    </section>
 
-
-    <!-- ============================================================
-         PAGE 06 — RUTE 02 INTRO SPREAD
-         ============================================================ -->
-    <div class="book-page" id="page-rute2-intro" data-title="Rute 02: Karya &amp; Rasa">
+    <!-- PAGE 06 — RUTE 02 INTRO -->
+    <section class="book-page" id="page-rute2-intro" data-title="Rute 02: Karya &amp; Rasa">
       <div class="rute2-bg">
         <img src="images/hero/hero-2.jpeg" alt="Karya dan Rasa Kenep">
       </div>
       <div class="rute2-vignette" aria-hidden="true"></div>
+
       <div class="rute2-content">
         <div class="rute2-chapter">Rute 02 &nbsp;·&nbsp; Tiga Destinasi</div>
         <div class="rute2-rule"></div>
@@ -364,6 +360,7 @@
           khas Kenep. Saksikan langsung proses warisan yang dipertahankan lintas generasi
           oleh para pengrajin dan pelaku kuliner Desa Kenep.
         </p>
+
         <div class="rute2-stops-section">
           <div class="rute2-stops-label">Urutan Kunjungan</div>
           <div class="rute2-stop-list">
@@ -393,31 +390,25 @@
           </div>
         </div>
       </div>
+
       <div class="nav-hint" aria-hidden="true">
         <span class="nav-hint-icon">‹</span>
         <span class="nav-hint-icon">›</span>
       </div>
       <div class="page-stamp" style="color:rgba(245,235,221,0.3);">06</div>
-    </div>
+    </section>
 
-
-    <!-- ============================================================
-         PAGE 07 — BATIK AYU KUSUMA
-         ============================================================ -->
-    <div class="book-page" id="page-dest-batik" data-title="Batik Ayu Kusuma">
+    <!-- PAGE 07 — BATIK AYU KUSUMA -->
+    <section class="book-page" id="page-dest-batik" data-title="Batik Ayu Kusuma">
       <div class="running-header">
         <span class="running-header-title">Rute 02 · Titik 01</span>
         <span class="running-header-brand">Sentra Batik</span>
       </div>
-      <div class="page-body dest-single-flow">
 
-        <!-- Elegant Framed Photo Container (Top Half) -->
+      <div class="page-body dest-single-flow">
         <div class="dest-photo-card">
           <div class="photo-frame-wrapper">
-            <img class="photo-main"
-                 src="images/craft-culinary/batik-ayu-kusuma-1.jpeg"
-                 alt="Batik Ayu Kusuma Kenep — Proses Membatik"
-                 data-caption="Batik Ayu Kusuma — Proses Membatik">
+            <img class="photo-main" src="images/craft-culinary/batik-ayu-kusuma-1.jpeg" alt="Batik Ayu Kusuma Kenep — Proses Membatik" data-caption="Batik Ayu Kusuma — Proses Membatik">
             <div class="photo-inset-badge" onclick="event.stopPropagation(); openPhotoModal('images/craft-culinary/batik-ayu-kusuma-2.jpeg','Batik Ayu Kusuma — Koleksi Motif');" title="Lihat Motif">
               <img src="images/craft-culinary/batik-ayu-kusuma-2.jpeg" alt="Motif Batik">
               <span>Motif Batik 🔍</span>
@@ -426,7 +417,6 @@
           </div>
         </div>
 
-        <!-- Destination Content (Bottom Half) -->
         <div class="dest-details-card">
           <div class="dest-details-header">
             <h2 class="dest-panel-title">Batik Ayu Kusuma</h2>
@@ -467,33 +457,26 @@
             </div>
           </div>
         </div>
-
       </div>
+
       <div class="nav-hint" aria-hidden="true">
         <span class="nav-hint-icon">‹</span>
         <span class="nav-hint-icon">›</span>
       </div>
       <div class="page-stamp">07</div>
-    </div>
+    </section>
 
-
-    <!-- ============================================================
-         PAGE 08 — JENANG DAN ROTI LESTARI
-         ============================================================ -->
-    <div class="book-page" id="page-dest-jenang" data-title="Jenang dan Roti Lestari">
+    <!-- PAGE 08 — JENANG DAN ROTI LESTARI -->
+    <section class="book-page" id="page-dest-jenang" data-title="Jenang dan Roti Lestari">
       <div class="running-header">
         <span class="running-header-title">Rute 02 · Titik 02</span>
         <span class="running-header-brand">Kuliner Tradisional</span>
       </div>
-      <div class="page-body dest-single-flow">
 
-        <!-- Elegant Framed Photo Container (Top Half) -->
+      <div class="page-body dest-single-flow">
         <div class="dest-photo-card">
           <div class="photo-frame-wrapper">
-            <img class="photo-main"
-                 src="images/craft-culinary/jenang-roti-lestari-1.jpeg"
-                 alt="Jenang dan Roti Lestari — Proses Produksi"
-                 data-caption="Jenang dan Roti Lestari — Proses Produksi">
+            <img class="photo-main" src="images/craft-culinary/jenang-roti-lestari-1.jpeg" alt="Jenang dan Roti Lestari — Proses Produksi" data-caption="Jenang dan Roti Lestari — Proses Produksi">
             <div class="photo-inset-badge" onclick="event.stopPropagation(); openPhotoModal('images/craft-culinary/jenang-roti-lestari-2.jpeg','Jenang dan Roti Lestari — Produk Siap Jual');" title="Lihat Produk">
               <img src="images/craft-culinary/jenang-roti-lestari-2.jpeg" alt="Produk Jenang">
               <span>Produk 🔍</span>
@@ -502,7 +485,6 @@
           </div>
         </div>
 
-        <!-- Destination Content (Bottom Half) -->
         <div class="dest-details-card">
           <div class="dest-details-header">
             <h2 class="dest-panel-title">Jenang dan Roti Lestari</h2>
@@ -543,33 +525,26 @@
             </div>
           </div>
         </div>
-
       </div>
+
       <div class="nav-hint" aria-hidden="true">
         <span class="nav-hint-icon">‹</span>
         <span class="nav-hint-icon">›</span>
       </div>
       <div class="page-stamp">08</div>
-    </div>
+    </section>
 
-
-    <!-- ============================================================
-         PAGE 09 — KARAK DAN RAMBAK BU NGATIYEM
-         ============================================================ -->
-    <div class="book-page" id="page-dest-karak" data-title="Karak dan Rambak Bu Ngatiyem">
+    <!-- PAGE 09 — KARAK DAN RAMBAK BU NGATIYEM -->
+    <section class="book-page" id="page-dest-karak" data-title="Karak dan Rambak Bu Ngatiyem">
       <div class="running-header">
         <span class="running-header-title">Rute 02 · Titik 03</span>
         <span class="running-header-brand">Oleh-Oleh Khas</span>
       </div>
-      <div class="page-body dest-single-flow">
 
-        <!-- Elegant Framed Photo Container (Top Half) -->
+      <div class="page-body dest-single-flow">
         <div class="dest-photo-card">
           <div class="photo-frame-wrapper">
-            <img class="photo-main"
-                 src="images/craft-culinary/karak-rambak-ngatiyem-1.jpeg"
-                 alt="Karak dan Rambak Bu Ngatiyem Kenep"
-                 data-caption="Karak dan Rambak Bu Ngatiyem">
+            <img class="photo-main" src="images/craft-culinary/karak-rambak-ngatiyem-1.jpeg" alt="Karak dan Rambak Bu Ngatiyem Kenep" data-caption="Karak dan Rambak Bu Ngatiyem">
             <div class="photo-inset-badge" onclick="event.stopPropagation(); openPhotoModal('images/craft-culinary/karak-rambak-ngatiyem-2.jpeg','Karak dan Rambak Bu Ngatiyem — Produk Unggulan');" title="Lihat Produk">
               <img src="images/craft-culinary/karak-rambak-ngatiyem-2.jpeg" alt="Produk Karak">
               <span>Produk 🔍</span>
@@ -578,7 +553,6 @@
           </div>
         </div>
 
-        <!-- Destination Content (Bottom Half) -->
         <div class="dest-details-card">
           <div class="dest-details-header">
             <h2 class="dest-panel-title">Karak dan Rambak Bu Ngatiyem</h2>
@@ -618,28 +592,26 @@
             </div>
           </div>
         </div>
-
       </div>
+
       <div class="nav-hint" aria-hidden="true">
         <span class="nav-hint-icon">‹</span>
         <span class="nav-hint-icon">›</span>
       </div>
       <div class="page-stamp">09</div>
-    </div>
+    </section>
 
-
-    <!-- ============================================================
-         PAGE 10 — INFORMASI PRAKTIS
-         ============================================================ -->
-    <div class="book-page" id="page-practical" data-title="Informasi Praktis">
+    <!-- PAGE 10 — INFORMASI PRAKTIS -->
+    <section class="book-page" id="page-practical" data-title="Informasi Praktis">
       <div class="running-header">
         <span class="running-header-title">Informasi Praktis</span>
         <span class="running-header-brand">Jelajah Kenep</span>
       </div>
+
       <div class="page-body">
         <div class="chapter-eyebrow">Bab III</div>
         <div class="gold-rule"></div>
-        <h2 class="intro-section-title" style="font-size:19pt;margin-bottom:3.5mm;">Panduan Kunjungan</h2>
+        <h2 class="intro-section-title" style="font-size: clamp(1.4rem, 3.5vw, 1.9rem); margin-bottom: 0.5rem;">Panduan Kunjungan</h2>
 
         <div class="practical-section-label">Jam Buka &amp; Kontak Destinasi</div>
         <table class="practical-table">
@@ -679,26 +651,25 @@
           </tbody>
         </table>
       </div>
+
       <div class="nav-hint" aria-hidden="true">
         <span class="nav-hint-icon">‹</span>
         <span class="nav-hint-icon">›</span>
       </div>
       <div class="page-stamp">10</div>
-    </div>
+    </section>
 
-
-    <!-- ============================================================
-         PAGE 11 — ROUTE DIAGRAM
-         ============================================================ -->
-    <div class="book-page" id="page-route-diagram" data-title="Ringkasan Rute">
+    <!-- PAGE 11 — ROUTE DIAGRAM -->
+    <section class="book-page" id="page-route-diagram" data-title="Ringkasan Rute">
       <div class="running-header">
         <span class="running-header-title">Ringkasan Rute Wisata</span>
         <span class="running-header-brand">Jelajah Kenep</span>
       </div>
+
       <div class="page-body">
         <div class="chapter-eyebrow">Diagram Rute</div>
         <div class="gold-rule"></div>
-        <h2 class="intro-section-title" style="font-size:19pt;margin-bottom:1.5mm;">Peta Perjalanan</h2>
+        <h2 class="intro-section-title" style="font-size: clamp(1.4rem, 3.5vw, 1.9rem); margin-bottom: 0.2rem;">Peta Perjalanan</h2>
         <p class="diagram-section-desc">
           Ketuk atau klik tautan "Buka Maps" di bawah setiap titik untuk navigasi real-time via Google Maps.
         </p>
@@ -730,7 +701,7 @@
           </div>
         </div>
 
-        <div class="gold-rule" style="margin:4.5mm 0;"></div>
+        <div class="gold-rule" style="margin: 0.6rem 0;"></div>
 
         <div class="diagram-route">
           <div class="diagram-route-header">
@@ -769,24 +740,21 @@
           </div>
         </div>
 
-        <div class="ornament-center" style="margin-top:5mm;">✦ &nbsp; ✦ &nbsp; ✦</div>
-        <p style="font-size:7pt;color:var(--muted);text-align:center;margin-top:2mm;line-height:1.65;">
+        <div class="ornament-center" style="margin-top:0.6rem;">✦ &nbsp; ✦ &nbsp; ✦</div>
+        <p style="font-size:0.72rem;color:var(--muted);text-align:center;margin-top:0.2rem;line-height:1.6;">
           Semua tautan Google Maps aktif dan dapat diklik langsung dari panduan digital ini.
         </p>
       </div>
+
       <div class="nav-hint" aria-hidden="true">
         <span class="nav-hint-icon">‹</span>
         <span class="nav-hint-icon">›</span>
       </div>
       <div class="page-stamp">11</div>
-    </div>
+    </section>
 
-
-    <!-- ============================================================
-         PAGE 12 — COLOPHON / BACK COVER
-         ============================================================ -->
-    <div class="book-page" id="page-colophon" data-title="Tentang Panduan Ini">
-      <div class="colophon-pattern" aria-hidden="true"></div>
+    <!-- PAGE 12 — COLOPHON -->
+    <section class="book-page" id="page-colophon" data-title="Tentang Panduan Ini">
       <div class="colophon-content">
         <div class="colophon-ornament">✦ &nbsp;&nbsp; ✦ &nbsp;&nbsp; ✦</div>
         <h2 class="colophon-title">JELAJAH<br>KENEP</h2>
@@ -808,14 +776,15 @@
           pengembangan wisata Desa Kenep.
         </p>
       </div>
+
       <div class="nav-hint" aria-hidden="true">
         <span class="nav-hint-icon">‹</span>
         <span class="nav-hint-icon">›</span>
       </div>
-      <div class="page-stamp" style="color:rgba(245,235,221,0.28);">12</div>
-    </div>
+      <div class="page-stamp" style="color:rgba(249,246,240,0.28);">12</div>
+    </section>
 
-  </div><!-- end #book-wrapper -->
+  </main>
 
   <script src="script.js"></script>
 </body>
