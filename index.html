@@ -74,13 +74,8 @@
                             <span class="stat-number">5</span>
                             <span class="stat-label">Destinasi Utama</span>
                         </div>
-                        <div class="stat-divider"></div>
-                        <div class="stat-item">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Navigasi QR Code</span>
-                        </div>
                     </div>
-                </div>
+                </div><!-- end hero-text-col -->
 
                 <!-- Visual Collage Showcase Column -->
                 <div class="hero-visual-col">
@@ -169,7 +164,7 @@
             <!-- Route Choice Cards -->
             <div class="route-cards-grid">
                 <!-- Rute 01 -->
-                <div class="route-choice-card active" id="cardRouteSejarah" onclick="switchRoute('sejarah')">
+                <div class="route-choice-card active" id="cardRouteSejarah" onclick="switchRoute('sejarah', true)">
                     <div class="route-card-header">
                         <span class="route-number">Rute 01</span>
                         <span class="route-count-badge">2 Destinasi</span>
@@ -181,11 +176,11 @@
                     <div class="route-card-stops">
                         Masjid Darussalam &rarr; Makam Kyai Lombok
                     </div>
-                    <button type="button" class="btn btn-outline">TAMPILKAN RUTE</button>
+                    <button type="button" class="btn btn-outline" onclick="event.stopPropagation(); switchRoute('sejarah', true)">TAMPILKAN RUTE</button>
                 </div>
 
                 <!-- Rute 02 -->
-                <div class="route-choice-card" id="cardRouteKarya" onclick="switchRoute('karya')">
+                <div class="route-choice-card" id="cardRouteKarya" onclick="switchRoute('karya', true)">
                     <div class="route-card-header">
                         <span class="route-number">Rute 02</span>
                         <span class="route-count-badge">3 Destinasi</span>
@@ -197,12 +192,12 @@
                     <div class="route-card-stops">
                         Batik Ayu Kusuma &rarr; Jenang Lestari &rarr; Karak Bu Ngatiyem
                     </div>
-                    <button type="button" class="btn btn-outline">TAMPILKAN RUTE</button>
+                    <button type="button" class="btn btn-outline" onclick="event.stopPropagation(); switchRoute('karya', true)">TAMPILKAN RUTE</button>
                 </div>
             </div>
 
             <!-- Vertical Route Timeline View -->
-            <div class="timeline-wrapper">
+            <div class="timeline-wrapper" id="timelineWrapper">
                 <h3 class="timeline-heading" id="timelineTitle">Peta Perjalanan: Jejak Sejarah</h3>
                 <p class="timeline-subheading">Ikuti urutan untuk pengalaman kunjungan yang optimal.</p>
                 
