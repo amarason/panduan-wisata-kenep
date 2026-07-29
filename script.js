@@ -19,7 +19,7 @@ const DESTINATIONS_DATA = [
             "images/history/masjid-darussalam-2.jpeg"
         ],
         description: "Masjid Darussalam merupakan masjid bersejarah di Kedunggudel yang diperkirakan berdiri sejak abad ke-14 dan berkaitan dengan penyebaran Islam oleh Kyai Lombok. Masjid ini dipercaya pernah menjadi tempat pertemuan Pakubuwono VI dan Pangeran Diponegoro pada masa kolonial Belanda. Keunikannya terletak pada mimbar kayu bergaya Majapahit, Sumur Kyai Pleret, dan bangunan berusia ratusan tahun yang masih terjaga hingga kini.",
-        hours: "Setiap Hari (24 Jam)",
+        hours: "04.00 – 21.00 WIB",
         manager: "Pengurus Masjid",
         contact: "-",
         mapsUrl: "https://maps.app.goo.gl/c6DrfnWUXdV579AF9",
@@ -100,7 +100,7 @@ const DESTINATIONS_DATA = [
         description: "Karak dan Rambak Bu Ngatiyem merupakan usaha kuliner yang berdiri sejak tahun 1940 dan kini dikelola oleh Wahyu Wulandari. Usaha ini menyediakan oleh-oleh khas berupa karak dan rambak dengan cita rasa gurih. Pengunjung dapat membeli berbagai produk karak dan rambak sebagai buah tangan khas daerah.",
         hours: "08.00 – Selesai",
         manager: "Wahyu Wulandari",
-        contact: "0882-2178-9756",
+        contact: "0882-2178-756",
         mapsUrl: "https://maps.app.goo.gl/koRWo6Q8CK7w9pVe7",
         nextId: null,
         nextName: null,
@@ -139,8 +139,8 @@ function initNavbar() {
     }
 }
 
-/* SWITCH ROUTE TIMELINE */
-function switchRoute(routeKey) {
+/* SWITCH ROUTE TIMELINE WITH OPTIONAL AUTO-SCROLL */
+function switchRoute(routeKey, autoScroll = false) {
     activeRoute = routeKey;
     
     // Update card selection UI
@@ -156,6 +156,30 @@ function switchRoute(routeKey) {
     }
     
     renderTimeline(routeKey);
+
+    if (autoScroll) {
+        scrollToTimeline();
+    }
+}
+
+/* SCROLL TO TIMELINE WRAPPER */
+function scrollToTimeline() {
+    const timelineWrapper = document.getElementById('timelineWrapper') || document.querySelector('.timeline-wrapper');
+    if (timelineWrapper) {
+        const yOffset = -90; 
+        const y = timelineWrapper.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+
+        // Highlight animation
+        timelineWrapper.style.transition = 'border-color 0.4s ease, box-shadow 0.4s ease';
+        timelineWrapper.style.borderColor = 'var(--terracotta)';
+        timelineWrapper.style.boxShadow = '0 12px 35px rgba(164, 93, 69, 0.2)';
+
+        setTimeout(() => {
+            timelineWrapper.style.borderColor = 'var(--border-color)';
+            timelineWrapper.style.boxShadow = 'var(--shadow-sm)';
+        }, 1800);
+    }
 }
 
 /* RENDER VERTICAL TIMELINE */
@@ -208,7 +232,6 @@ function filterDestinations(categoryKey, btnElement) {
 
 /* HELPER TO RENDER IMAGES CONTAINER (SINGLE OR MULTI PHOTO) */
 function renderImageGallery(item) {
-    // Support both item.images array and legacy single item.image string
     const imgList = Array.isArray(item.images) && item.images.length > 0
         ? item.images
         : (item.image ? [item.image] : []);
@@ -223,8 +246,9 @@ function renderImageGallery(item) {
 
     if (imgList.length === 1) {
         return `
-            <div class="dest-card-image single">
+            <div class="dest-card-image single" onclick="openPhotoModal('${imgList[0]}', '${item.name}')">
                 <img src="${imgList[0]}" alt="${item.name} Desa Kenep" onerror="this.src='https://placehold.co/800x600/263B52/F5EBDD?text=${encodeURIComponent(item.name)}'">
+                <div class="gallery-zoom-icon">🔍</div>
             </div>
         `;
     }
